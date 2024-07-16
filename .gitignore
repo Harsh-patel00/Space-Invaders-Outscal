@@ -34,3 +34,8 @@
 # Others
 *.vs/
 *x64/
+*.pdb
+
+Space-Invaders/.idea
+Space-Invaders/sfml/lib
+Space-Invaders/*.vcxproj

@@ -1,5 +1,6 @@
-#include <SFML/Graphics.hpp>
+#include "Header/GameService.hpp"
 
+/*
 class Player
 {
 public:
@@ -27,10 +28,11 @@ private:
     sf::Vector2f _position = sf::Vector2f(200.f, 100.f);
     
 };
+*/
 
 int main()
 {
-    sf::VideoMode videoMode = sf::VideoMode(800, 600);
+    /*sf::VideoMode videoMode = sf::VideoMode(800, 600);
     sf::RenderWindow window(videoMode, "Space Invaders");
 
     Player player;
@@ -64,6 +66,15 @@ int main()
         window.draw(player.sprite);
         
         window.display();
+    }*/
+
+    GameService gameService;
+    gameService.ignite();
+
+    while (gameService.isRunning())
+    {
+        gameService.update();
+        gameService.render();
     }
     
     return 0;

@@ -12,8 +12,8 @@ private:
 
 public:
     void ignite();
+    bool isRunning();
     void update();
     void render();
-    bool isRunning();
 };
 

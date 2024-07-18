@@ -25,8 +25,6 @@ void GameService::initializeVariables()
 
 void GameService::destroy()
 {
-  // delete _serviceLocatorPtr;
-  // delete _gameWindowPtr;
 }
 
 void GameService::ignite()
@@ -37,6 +35,8 @@ void GameService::ignite()
 
 void GameService::update()
 {
+  _serviceLocatorPtr->getEventService()->processEvents();
+  
   _serviceLocatorPtr->update();
 }
 

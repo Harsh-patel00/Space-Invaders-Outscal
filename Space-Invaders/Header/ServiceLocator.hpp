@@ -1,4 +1,5 @@
 #pragma once
+#include "EventService.hpp"
 #include "GraphicService.hpp"
 
 class ServiceLocator
@@ -20,8 +21,10 @@ public:
 
 public: // Services getter-setters
   GraphicService* getGraphicService();
+  EventService* getEventService();
   
 private:
   GraphicService *_graphicServicePtr = nullptr;
+  EventService *_eventServicePtr = nullptr;
   
 };

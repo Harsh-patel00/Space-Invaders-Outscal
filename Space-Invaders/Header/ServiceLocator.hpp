@@ -1,4 +1,5 @@
 #pragma once
+#include "GraphicService.hpp"
 
 class ServiceLocator
 {
@@ -16,5 +17,11 @@ public:
   void initialize();
   void update();
   void render();
+
+public: // Services getter-setters
+  GraphicService* getGraphicService();
+  
+private:
+  GraphicService *_graphicServicePtr = nullptr;
   
 };

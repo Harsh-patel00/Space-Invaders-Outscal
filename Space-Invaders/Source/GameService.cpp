@@ -2,33 +2,52 @@
 
 GameService::GameService()
 {
+  _serviceLocatorPtr = nullptr;
+  _gameWindowPtr = nullptr;
+  
 }
 
 GameService::~GameService()
 {
+  destroy();
 }
 
 void GameService::initialize()
 {
+  _serviceLocatorPtr->initialize();
+  initializeVariables();
+}
+
+void GameService::initializeVariables()
+{
+  _gameWindowPtr = _serviceLocatorPtr->getGraphicService()->getGameWindow();
 }
 
 void GameService::destroy()
 {
+  // delete _serviceLocatorPtr;
+  // delete _gameWindowPtr;
 }
 
 void GameService::ignite()
 {
+  _serviceLocatorPtr = ServiceLocator::getInstance();
+  initialize();
 }
 
 void GameService::update()
 {
+  _serviceLocatorPtr->update();
 }
 
 void GameService::render()
-{
+{  
+  _gameWindowPtr->clear(_serviceLocatorPtr->getGraphicService()->getWindowColor());
+  _serviceLocatorPtr->render();
+  _gameWindowPtr->display();
 }
 
 bool GameService::isRunning()
 {
-  return false;
+  return _serviceLocatorPtr->getGraphicService()->isGameWindowOpen();
 }

@@ -68,14 +68,15 @@ int main()
         window.display();
     }*/
 
-    GameService gameService;
-    gameService.ignite();
+    GameService *_gameServicePtr = new GameService();
+    _gameServicePtr->ignite();
 
-    while (gameService.isRunning())
+    while (_gameServicePtr->isRunning())
     {
-        gameService.update();
-        gameService.render();
+        _gameServicePtr->update();
+        _gameServicePtr->render();
     }
     
+    delete _gameServicePtr;
     return 0;
 }

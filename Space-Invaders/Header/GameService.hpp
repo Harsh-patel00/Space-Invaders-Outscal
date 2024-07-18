@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ServiceLocator.hpp"
+
 class GameService
 {
 public:
@@ -8,6 +10,7 @@ public:
 
 private:
     void initialize();
+    void initializeVariables();
     void destroy();
 
 public:
@@ -15,5 +18,9 @@ public:
     bool isRunning();
     void update();
     void render();
+
+private:
+    ServiceLocator *_serviceLocatorPtr = nullptr;
+    sf::RenderWindow *_gameWindowPtr = nullptr;
 };
 

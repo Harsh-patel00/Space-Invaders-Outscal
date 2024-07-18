@@ -5,6 +5,10 @@ class Player
 public:
     int getScore() {return _score;}
     void setScore(int newScore) {_score = newScore;}
+
+    sf::Vector2f getPosition() {return _position;}
+    void setPosition(sf::Vector2f newPosition) {_position = newPosition;}
+    
     void takeDamage() {}
     void move() {}
     void shootBullets() {}
@@ -28,6 +32,8 @@ int main()
     sf::RenderWindow window(videoMode, "Space Invaders");
 
     Player player;
+    player.texture.loadFromFile("assets/textures/player_ship.png");
+    player.sprite.setTexture(player.texture);
     
     while(window.isOpen())
     {
@@ -39,7 +45,21 @@ int main()
                 window.close();
         }
 
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            player.move();
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            player.move();
+        }
+        
         window.clear(sf::Color(50,50,50));
+
+        player.sprite.setPosition(player.getPosition());
+
+        window.draw(player.sprite);
         
         window.display();
     }

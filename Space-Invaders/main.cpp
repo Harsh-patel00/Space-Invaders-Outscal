@@ -6,11 +6,13 @@ public:
     int getScore() {return _score;}
     void setScore(int newScore) {_score = newScore;}
 
+    int getMoveSpeed() {return _movementSpeed;}
+    
     sf::Vector2f getPosition() {return _position;}
     void setPosition(sf::Vector2f newPosition) {_position = newPosition;}
     
     void takeDamage() {}
-    void move() {}
+    void move(float offsetX) {_position.x += offsetX;}
     void shootBullets() {}
     
     
@@ -47,12 +49,12 @@ int main()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            player.move();
+            player.move(-1.0 * player.getMoveSpeed());
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            player.move();
+            player.move(1.0 * player.getMoveSpeed());
         }
         
         window.clear(sf::Color(50,50,50));
